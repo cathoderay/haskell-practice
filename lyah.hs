@@ -143,3 +143,10 @@ zip' _ [] = []
 zip' [] _ = []
 zip' (x:xs) (y:ys) = (x, y):(zip' xs ys)
 
+elem' :: Eq(a) => a -> [a] -> Bool
+elem' x [] = False
+elem' x (y:ys)
+ | x == y = True
+ | otherwise = x `elem'` ys
+
+
