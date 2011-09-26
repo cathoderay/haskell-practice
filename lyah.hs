@@ -176,6 +176,6 @@ elem' x (y:ys)
 
 qsort' :: Ord(a) => [a] -> [a]
 qsort' [] = []
-qsort' [x] = [x]
 qsort' (p:xs) = qsort' [x | x <- xs, x < p] ++ [p] ++ qsort' [x | x <- xs, x >= p]
+
 
