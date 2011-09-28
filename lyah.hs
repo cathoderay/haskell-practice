@@ -179,3 +179,15 @@ qsort' [] = []
 qsort' (p:xs) = qsort' [x | x <- xs, x < p] ++ [p] ++ qsort' [x | x <- xs, x >= p]
 
 
+--Sectioning infix functions
+divideByTen :: (Floating a) => a -> a
+divideByTen = (/10)
+
+
+isUpperAlphanum :: Char -> Bool
+isUpperAlphanum = (`elem` ['A'..'Z'])
+
+
+applyTwice :: (a ->  a) -> a -> a
+applyTwice f x = f (f x)
+
