@@ -200,3 +200,10 @@ zipWith' f (x:xs) (y:ys) = (f x y):(zipWith' f xs ys)
 
 flip' :: (a -> b -> c) -> b -> a -> c
 flip' f x y = f y x
+
+
+map' :: (a -> b) -> [a] -> [b]
+map' _ [] = []
+map' f (x:xs) = (f x):(map' f xs)
+
+
