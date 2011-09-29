@@ -248,3 +248,10 @@ numLongChains = length (filter isLong (map chain [1..100]))
 --ghci>(listOfFuns !! 4) 5
 --20
 
+
+--Refactoring numLongChains with lambda
+numLongChains' :: Int
+numLongChains' = length (filter (\xs -> length xs > 15) (map chain [1..100]))
+
+
+
