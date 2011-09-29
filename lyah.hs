@@ -237,8 +237,14 @@ chain n
  | otherwise = n:chain (div n 2)
 
 --Finding the number of collatz sequences with length > 15 
---Sequences starts from 1 to 100
+--Sequences start from 1 to 100
 numLongChains :: Int
 numLongChains = length (filter isLong (map chain [1..100]))
   where isLong xs = length xs > 15
+
+
+--Mapping with multiple parameters! =)
+--ghci> let listOfFuns = map (*) [0..]
+--ghci>(listOfFuns !! 4) 5
+--20
 
