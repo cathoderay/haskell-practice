@@ -254,4 +254,11 @@ numLongChains' :: Int
 numLongChains' = length (filter (\xs -> length xs > 15) (map chain [1..100]))
 
 
+--foldl use; very similar with reduce from clojure
+sum' :: (Num a) => [a] -> a
+sum' xs = foldl (\acc x -> acc + x) 0 xs
+
+--refactoring, taking into account that functions can be curried, =)
+sum'' :: (Num a) => [a] -> a
+sum'' = foldl (+) 0
 
