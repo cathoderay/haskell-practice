@@ -174,9 +174,9 @@ elem' x (y:ys)
  | otherwise = x `elem'` ys
 
 
-qsort' :: Ord(a) => [a] -> [a]
-qsort' [] = []
-qsort' (p:xs) = qsort' [x | x <- xs, x < p] ++ [p] ++ qsort' [x | x <- xs, x >= p]
+qsort :: Ord(a) => [a] -> [a]
+qsort [] = []
+qsort (p:xs) = qsort' [x | x <- xs, x < p] ++ [p] ++ qsort' [x | x <- xs, x >= p]
 
 
 --Sectioning infix functions
@@ -212,6 +212,21 @@ filter' _ [] = []
 filter' f (x:xs)
  | f x       = x:filter' f xs
  | otherwise = filter f xs
+
+
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) =
+  let smallerOrEqual = filter' (<= x) xs
+      larger = filter' (> x) xs
+  in quicksort smallerOrEqual ++ [x] ++ quicksort larger
+
+
+takeWhile' :: (a -> Bool) -> [a] -> [a]
+takeWhile' _ [] = []
+takeWhile' p (x:xs)
+ | p x       = x:takeWhile' p xs
+ | otherwise = []
 
 
 
