@@ -176,7 +176,7 @@ elem' x (y:ys)
 
 qsort :: Ord(a) => [a] -> [a]
 qsort [] = []
-qsort (p:xs) = qsort' [x | x <- xs, x < p] ++ [p] ++ qsort' [x | x <- xs, x >= p]
+qsort (p:xs) = qsort [x | x <- xs, x < p] ++ [p] ++ qsort [x | x <- xs, x >= p]
 
 
 --Sectioning infix functions
@@ -229,4 +229,10 @@ takeWhile' p (x:xs)
  | otherwise = []
 
 
+--Collatz conjecture
+chain :: Integer -> [Integer]
+chain 1 = [1]
+chain n 
+ | odd n     = n:chain (3 * n + 1)
+ | otherwise = n:chain (div n 2)
 
