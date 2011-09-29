@@ -236,3 +236,9 @@ chain n
  | odd n     = n:chain (3 * n + 1)
  | otherwise = n:chain (div n 2)
 
+--Finding the number of collatz sequences with length > 15 
+--Sequences starts from 1 to 100
+numLongChains :: Int
+numLongChains = length (filter isLong (map chain [1..100]))
+  where isLong xs = length xs > 15
+
