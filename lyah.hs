@@ -258,7 +258,25 @@ numLongChains' = length (filter (\xs -> length xs > 15) (map chain [1..100]))
 sum' :: (Num a) => [a] -> a
 sum' xs = foldl (\acc x -> acc + x) 0 xs
 
+
 --refactoring, taking into account that functions can be curried, =)
 sum'' :: (Num a) => [a] -> a
 sum'' = foldl (+) 0
+
+
+map'' :: (a -> b) -> [a] -> [b]
+map'' f xs = foldr (\x acc -> f x : acc) [] xs 
+
+
+map''' :: (a -> b) -> [a] -> [b]
+map''' f xs = foldl (\acc x -> acc ++ [f x]) [] xs
+
+
+elem'' :: (Eq a) => a -> [a] -> Bool
+elem'' y ys = foldr (\x acc -> if x == y then True else acc) False ys 
+
+
+maximum'' :: (Ord a) => [a] -> a
+maximum'' = foldl1 max
+
 
