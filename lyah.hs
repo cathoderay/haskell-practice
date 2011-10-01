@@ -280,3 +280,6 @@ maximum'' :: (Ord a) => [a] -> a
 maximum'' = foldl1 max
 
 
+reverse'' :: [a] -> [a]
+reverse'' xs = foldr (\x acc -> acc ++ [x]) [] xs
+
