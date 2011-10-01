@@ -295,4 +295,8 @@ and' :: [Bool] -> Bool
 and' = foldr (&&) True
 
 
+(&&*) :: Bool -> Bool -> Bool
+True &&* x = x
+False &&* _ = False
+
 
