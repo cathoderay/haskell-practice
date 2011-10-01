@@ -281,5 +281,10 @@ maximum'' = foldl1 max
 
 
 reverse'' :: [a] -> [a]
-reverse'' xs = foldr (\x acc -> acc ++ [x]) [] xs
+reverse'' = foldr (\x acc -> acc ++ [x]) []
+
+--more efficient than the previous one
+reverse''' :: [a] -> [a]
+reverse''' = foldl (\acc x -> x:acc) []
+
 
