@@ -278,3 +278,6 @@ reverse''' = foldl (\acc x -> x:acc) []
 reverse'''' :: [a] -> [a]
 reverse'''' = foldl (flip (:)) []
 
+product' :: Num(a) => [a] -> a
+product' = foldl (*) 1
+
