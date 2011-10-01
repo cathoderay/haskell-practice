@@ -274,4 +274,7 @@ reverse'' = foldr (\x acc -> acc ++ [x]) []
 reverse''' :: [a] -> [a]
 reverse''' = foldl (\acc x -> x:acc) []
 
+--using flip
+reverse'''' :: [a] -> [a]
+reverse'''' = foldl (flip (:)) []
 
