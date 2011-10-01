@@ -286,3 +286,6 @@ product' = foldl (*) 1
 filter'' :: (a -> Bool) -> [a] -> [a]
 filter'' f = foldr (\x acc -> if f x then x:acc else acc) []
 
+
+last' :: [a] -> a
+last' = foldl1 (\_ x -> x)
