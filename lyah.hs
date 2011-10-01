@@ -1,7 +1,5 @@
-{-
 addVectors :: (Double, Double) -> (Double, Double) -> (Double, Double)
 addVectors (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)
--}
 
 
 first :: (a, b, c) -> a
@@ -16,11 +14,9 @@ third :: (a, b, c) -> c
 third (_, _, z) = z
 
 
-{-
 head' :: [a] -> a
 head' [] = error "Can't call head on an empty list, dummy!"
 head' (x:_) = x
--}
 
 
 tell :: (Show a) => [a] -> String
@@ -39,18 +35,16 @@ firstLetter "" = "Empty string, whoops!"
 firstLetter all@(x:xs) = "The first letter of " ++ all ++ " is " ++ [x]
 
 
-{-
 bmiTell ::  Double -> String
 bmiTell bmi
  | bmi <= 18.5 = "You're underweight, you emo, you!"
  | bmi <= 25.0 = "You're supposedly normal. Pffft, I bet you're ugly!"
  | bmi <= 30.0 = "You're fat! Lose some weight, fatty!"
  | otherwise = "You're a whale, congratulations!"
--}
 
 
-bmiTell :: Double -> Double -> String
-bmiTell weight height
+bmiTell' :: Double -> Double -> String
+bmiTell' weight height
  | bmi <= skinny  = "You're underweight, you emo, you!"
  | bmi <= normal  = "You're supposedly normal. Pffft, I bet you're ugly!"
  | bmi <= fat     = "You're fat! Lose some weight, fatty!" 
@@ -84,15 +78,13 @@ greet "Fernando" = niceGreeting ++ " Fernando!"
 greet name = badGreeting ++ " " ++ name
 
 
-{-
 initials firstname lastname = [f] ++ ". " ++ [l] ++ "."
  where (f:_) = firstname
        (l:_) = lastname
--}
 
 
-initials :: String -> String -> String
-initials (f:_) (l:_) = [f] ++ ". " ++ [l] ++ "."
+initials' :: String -> String -> String
+initials' (f:_) (l:_) = [f] ++ ". " ++ [l] ++ "."
 
 
 calcBmis :: [(Double, Double)] -> [Double]
@@ -107,27 +99,23 @@ cylinder r h =
   in sideArea + 2 * topArea
 
 
-{-
-calcBmis :: [(Double, Double)] -> [Double]
-calcBmis xs = [bmi | (w, h) <- xs, let bmi = w / h ^ 2]
--}
+calcBmis' :: [(Double, Double)] -> [Double]
+calcBmis' xs = [bmi | (w, h) <- xs, let bmi = w / h ^ 2]
 
 
-head' :: [a] -> a
-head' xs = case xs of [] ->  error "No head for empty lists!"
-                      (x:_) -> x
+head'' :: [a] -> a
+head'' xs = case xs of [] ->  error "No head for empty lists!"
+                       (x:_) -> x
 
 
-{-
-describeList :: [a] -> String                      
+describeList :: [a] -> String
 describeList ls = "THe list is " ++ case ls of [] -> "empty."
                                                [x] -> "a singleton list."
                                                xs -> "a longer list."
--}
 
 
-describeList :: [a] -> String                                               
-describeList ls = "The list is " ++ what ls
+describeList' :: [a] -> String
+describeList' ls = "The list is " ++ what ls
  where what [] = "empty."
        what [x] = "a singleton list."
        what xs = "a longer list."
@@ -237,7 +225,6 @@ chain n
  | otherwise = n:chain (div n 2)
 
 --Finding the number of collatz sequences with length > 15 
---Sequences start from 1 to 100
 numLongChains :: Int
 numLongChains = length (filter isLong (map chain [1..100]))
   where isLong xs = length xs > 15
