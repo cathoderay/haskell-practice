@@ -304,11 +304,17 @@ sqrtSums :: Int
 sqrtSums = length (takeWhile (< 1000) (scanl1 (+) (map sqrt [1..]))) + 1
 
 
+--function application
 ($*) :: (a -> b) -> a -> b
 f $* x = f x
 
 
+--function composition
 (.*) :: (b -> c) -> (a -> b) -> a -> c
 f .* g = \x -> f (g x)
 
+
+--point-free style
+oddSquareSum' :: Integer
+oddSquareSum' = sum . takeWhile (<10000) . filter odd $ map (^2) [1..]
 
