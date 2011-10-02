@@ -1,4 +1,4 @@
-import Data.List (group, sort, group, tails, isPrefixOf)
+import Data.List (group, sort, tails, isPrefixOf)
 
 
 wordNums :: String -> [(String,Int)]
