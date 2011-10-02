@@ -308,3 +308,7 @@ sqrtSums = length (takeWhile (< 1000) (scanl1 (+) (map sqrt [1..]))) + 1
 f $* x = f x
 
 
+(.*) :: (b -> c) -> (a -> b) -> a -> c
+f .* g = \x -> f (g x)
+
+
