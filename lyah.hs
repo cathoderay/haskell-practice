@@ -318,3 +318,10 @@ f .* g = \x -> f (g x)
 oddSquareSum' :: Integer
 oddSquareSum' = sum . takeWhile (<10000) . filter odd $ map (^2) [1..]
 
+
+findKey :: (Eq k) =>  k -> [(k, v)] -> Maybe v
+findKey key [] = Nothing
+findKey key ((k, v):xs)
+  | key == k  = Just v
+  | otherwise = findKey key xs
+
