@@ -5,7 +5,7 @@
 
 
     Considerations:
-    If we have a non-empty lists, we could use foldl1:
+    If we have non-empty lists, we could use foldl1:
     concat' :: [[a]] -> [a]
     concat' = foldl1 (++)
 

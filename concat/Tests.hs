@@ -8,6 +8,10 @@
     Just to help in TDD thinking and modeling.
 
     Running under GHC 7.0.3
+
+    In order to run:
+       $ ghc Tests.hs
+       $ ./Tests
 --}
 
 
