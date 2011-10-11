@@ -2,7 +2,7 @@
     Author: Ronald Kaiser
     Description: This module provides a concatenation function.
     Email : <raios dot catodicos @ gmail dot com>
-
+    Github: http://github.com/cathoderay/haskell-practice
 
     Considerations:
     If we have non-empty lists, we could use foldl1:

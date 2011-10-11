@@ -1,7 +1,8 @@
 {--
     Author: Ronald Kaiser
-        Description: This module provides a reverse function.
+    Description: This module provides a reverse function.
     Email : <raios dot catodicos @ gmail dot com>
+    Github: http://github.com/cathoderay/haskell-practice
 
     Considerations:
 
