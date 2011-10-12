@@ -319,7 +319,6 @@ oddSquareSum' :: Integer
 oddSquareSum' = sum . takeWhile (<10000) . filter odd $ map (^2) [1..]
 
 
-
 findKey :: (Eq k) =>  k -> [(k, v)] -> Maybe v
 findKey key [] = Nothing
 findKey key ((k, v):xs)
@@ -332,6 +331,7 @@ findKey' key xs = foldr (\(k, v) acc -> if key == k then Just v else acc) Nothin
 
 
 data Shape = Circle Float Float Float | Rectangle Float Float Float Float
+ deriving (Show)
 
 area :: Shape -> Float
 area (Circle _ _ r) = pi * r ^ 2
