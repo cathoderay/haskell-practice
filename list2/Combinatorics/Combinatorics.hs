@@ -37,7 +37,7 @@
     permutations to:
     permutations :: [a] -> [[a]]
     permutations [x] = [[x]]
-    permutations xs = concat (map (\(i, v) -> (map ([v]++) $ permutations (removeNth i xs))) (zip [0..] xs))
+    permutations xs = concat (map (\(i, v) -> (map (v:) $ permutations (removeNth i xs))) (zip [0..] xs))
 
 
     Using '$' and '.':
