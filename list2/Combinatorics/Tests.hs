@@ -25,6 +25,7 @@ main = do runTestTT tests
 
 tests = TestList [
   permutationsWithOneElement,
+  permutationsWithTwoElements,
   permutationsWithThreeElements
   ]
 
