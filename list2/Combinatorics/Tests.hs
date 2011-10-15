@@ -18,47 +18,44 @@
 module Main
 where
 import Test.HUnit
-import Combinatorics (permutations, combinations)
+import Combinatorics (perm, comb)
 
 
 main = do runTestTT tests
 
-tests = TestList [
-  permutationsWithOneElement,
-  permutationsWithTwoElements,
-  permutationsWithThreeElements,
+tests = TestList [ permWithOneElement
+                 , permWithTwoElements
+                 , permWithThreeElements
+                 , combWithOneElement
+                 , combTakeOneFromTwoElements
+                 , combTakeTwoFromTwoElements]
 
-  combinationsWithOneElement,
-  combinationsTakeOneFromTwoElements,
-  combinationsTakeTwoFromTwoElements
-  ]
+permWithOneElement = 
+  perm [1] ~?= [[1]]
 
-permutationsWithOneElement = 
-  permutations [1] ~?= [[1]]
+permWithTwoElements =
+  perm [True,False] ~?= [ [True, False]
+                        , [False, True]]
 
-permutationsWithTwoElements =
-  permutations [True,False] ~?= [[True, False],
-                                [False, True]]
+permWithThreeElements = 
+  perm ['a', 'b', 'c'] ~?= [ ['a', 'b', 'c']
+                           , ['a', 'c', 'b'] 
+                           , ['b', 'a', 'c']
+                           , ['b', 'c', 'a']
+                           , ['c', 'a', 'b']
+                           , ['c', 'b', 'a']] 
 
-permutationsWithThreeElements = 
-  permutations ['a', 'b', 'c'] ~?= [['a', 'b', 'c'],
-                                    ['a', 'c', 'b'], 
-                                    ['b', 'a', 'c'],
-                                    ['b', 'c', 'a'],
-                                    ['c', 'a', 'b'],
-                                    ['c', 'b', 'a']] 
+combWithOneElement =
+  comb [1] 1 ~?= [[1]]
 
-combinationsWithOneElement =
-  combinations [1] 1 ~?= [[1]]
+combTakeOneFromTwoElements =
+  comb [1,2] 1 ~?= [[1], [2]]
 
-combinationsTakeOneFromTwoElements =
-  combinations [1,2] 1 ~?= [[1], [2]]
+combTakeTwoFromTwoElements =
+  comb [1, 2] 2 ~?= [[1,2]]
 
-combinationsTakeTwoFromTwoElements =
-  combinations [1, 2] 2 ~?= [[1,2]]
-
-combinationsTakeTwofromThreeElements =
-  combinations ['a', 'b', 'c'] 2 ~?= [['a', 'b'],
-                                      ['a', 'c'],
-                                      ['b', 'c']]
+combTakeTwofromThreeElements =
+  comb ['a', 'b', 'c'] 2 ~?= [ ['a', 'b']
+                             , ['a', 'c']
+                             , ['b', 'c']]
                                       
