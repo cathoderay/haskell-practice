@@ -6,7 +6,7 @@
 
 
     PERMUTATIONS:
-    ================
+    =============
 
     1. First approach:
 
@@ -45,6 +45,22 @@
     permutations [x] = [[x]]
     permutations xs = concat $ map (\(i, v) -> (map (v:) . permutations $ removeNth i xs)) (zip [0..] xs)
 
+   
+    COMBINATIONS:
+    =============
+    
+    1. First approach:
+    
+    Combinations from [a, b, c, d] taking 2 elements can be arranged like:
+    [a] ++ combinations [b, c, d] 1
+    [b] ++ combinations [c, d] 1
+    [c] ++ combinations [d] 1
+    
+    So, a recursive solution would be:
+    combinations :: [a] -> Integer -> [[a]]
+    combinations _ 0 = [[]]
+    combinations [] _ = []
+    combinations (x:xs) n = map (x:) (combinations xs (n - 1)) ++ combinations xs n
 
 --}
 
@@ -58,4 +74,10 @@ removeNth n xs = take n xs ++ drop (n + 1) xs
 permutations :: [a] -> [[a]]
 permutations [x] = [[x]]
 permutations xs = concat $ map (\(i, v) -> (map (v:) . permutations $ removeNth i xs)) (zip [0..] xs)
+
+
+combinations :: [a] -> Integer -> [[a]]
+combinations _ 0 = [[]]
+combinations [] _ = []
+combinations (x:xs) n = map (x:) (combinations xs (n - 1)) ++ combinations xs n
 

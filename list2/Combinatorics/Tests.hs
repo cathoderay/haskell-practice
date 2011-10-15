@@ -18,7 +18,7 @@
 module Main
 where
 import Test.HUnit
-import Combinatorics (permutations)
+import Combinatorics (permutations, combinations)
 
 
 main = do runTestTT tests
@@ -26,22 +26,39 @@ main = do runTestTT tests
 tests = TestList [
   permutationsWithOneElement,
   permutationsWithTwoElements,
-  permutationsWithThreeElements
+  permutationsWithThreeElements,
+
+  combinationsWithOneElement,
+  combinationsTakeOneFromTwoElements,
+  combinationsTakeTwoFromTwoElements
   ]
 
 permutationsWithOneElement = 
- permutations [1] ~?= [[1]]
+  permutations [1] ~?= [[1]]
 
 permutationsWithTwoElements =
- permutations [True,False] ~?= [[True, False],
+  permutations [True,False] ~?= [[True, False],
                                 [False, True]]
 
 permutationsWithThreeElements = 
- permutations ['a', 'b', 'c'] ~?= [['a', 'b', 'c'],
-                                   ['a', 'c', 'b'], 
-                                   ['b', 'a', 'c'],
-                                   ['b', 'c', 'a'],
-                                   ['c', 'a', 'b'],
-                                   ['c', 'b', 'a']] 
+  permutations ['a', 'b', 'c'] ~?= [['a', 'b', 'c'],
+                                    ['a', 'c', 'b'], 
+                                    ['b', 'a', 'c'],
+                                    ['b', 'c', 'a'],
+                                    ['c', 'a', 'b'],
+                                    ['c', 'b', 'a']] 
 
+combinationsWithOneElement =
+  combinations [1] 1 ~?= [[1]]
 
+combinationsTakeOneFromTwoElements =
+  combinations [1,2] 1 ~?= [[1], [2]]
+
+combinationsTakeTwoFromTwoElements =
+  combinations [1, 2] 2 ~?= [[1,2]]
+
+combinationsTakeTwofromThreeElements =
+  combinations ['a', 'b', 'c'] 2 ~?= [['a', 'b'],
+                                      ['a', 'c'],
+                                      ['b', 'c']]
+                                      
