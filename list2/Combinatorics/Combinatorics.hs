@@ -62,7 +62,7 @@
     perm [] = [[]]
     perm xs = concat (map (\x -> map (x:) (perm (remove xs x))) xs)
 
-    Using '$' and:
+    Using '$':
     perm :: Eq(a) => [a] -> [[a]]
     perm [] = [[]]
     perm xs = concat $ map (\x -> map (x:) (perm $ remove xs x)) xs
