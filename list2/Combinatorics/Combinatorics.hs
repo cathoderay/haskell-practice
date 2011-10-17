@@ -109,7 +109,7 @@ remove (x:xs) e = if x == e then xs else x:remove xs e
 
 perm :: Eq(a) => [a] -> [[a]]
 perm [] = [[]]
-perm xs = [x:ys | x <- xs, ys <- perm' (remove xs x)]
+perm xs = [x:ys | x <- xs, ys <- perm (remove xs x)]
 
 
 comb _ 0 = [[]]
