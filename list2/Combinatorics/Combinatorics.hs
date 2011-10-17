@@ -31,7 +31,7 @@
     perm xs = concat (map (\(i, v) -> (map ([v]++) $ perm (removeNth i xs))) (zip [0..] xs))
 
     Since ':' is 'cheaper' than '++', we can use 'v:' instead of '[v]++', improving
-    permueations to:
+    permutations to:
     perm :: [a] -> [[a]]
     perm [x] = [[x]]
     perm xs = concat (map (\(i, v) -> (map (v:) $ perm (removeNth i xs))) (zip [0..] xs))
@@ -62,17 +62,16 @@
     perm [] = [[]]
     perm xs = concat (map (\x -> map (x:) (perm (remove xs x))) xs)
 
-    Using '$' and '.':
+    Using '$' and:
     perm :: Eq(a) => [a] -> [[a]]
     perm [] = [[]]
-    perm xs = concat $ map (\x -> map (x:) . perm $ remove xs x) xs
+    perm xs = concat $ map (\x -> map (x:) (perm $ remove xs x)) xs
 
 
     3. third approach (recursion + list comprehension):
 
     Making use of 'remove' function defined previously, a list comprehension may
     be used:
-
     perm Eq(a) => [a] -> [[a]]
     perm [] = [[]]
     perm xs = [x: | x <- xs, ys <- perm (remove xs x)]
