@@ -60,17 +60,17 @@
     Refactoring to use the new remove function: 
     perm :: Eq(a) => [a] -> [[a]]
     perm [] = [[]]
-    perm xs = concat (map(\x -> map (x:) (perm (remove xs x))) xs)
+    perm xs = concat (map (\x -> map (x:) (perm (remove xs x))) xs)
 
     Using '$' and '.':
     perm :: Eq(a) => [a] -> [[a]]
     perm [] = [[]]
-    perm xs = concat $ map (\x -> map (x:) (perm $ remove xs x)) xs
+    perm xs = concat $ map (\x -> map (x:) . perm $ remove xs x) xs
 
 
     3. third approach (recursion + list comprehension):
 
-    Making use of remove function defined previously, a list comprehension may
+    Making use of 'remove' function defined previously, a list comprehension may
     be used:
 
     perm Eq(a) => [a] -> [[a]]
@@ -92,9 +92,9 @@
     comb :: [a] -> Integer -> [[a]]
     comb _ 0 = [[]]
     comb [] _ = []
-    comb (x:xs) k = map (x:) (comb xs (k - 1)) ++ comb xs k
-
+    comb (x:xs) k = comb xs k ++ map (x:) (comb xs (k - 1))
 --}
+
 
 module Combinatorics
 ( comb
@@ -104,7 +104,9 @@ module Combinatorics
 
 remove :: Eq(a) => [a] -> a -> [a]
 remove [] _ = []
-remove (x:xs) e = if x == e then xs else x:remove xs e
+remove (x:xs) e
+  | x == e    = xs
+  | otherwise = x:remove xs e
 
 
 perm :: Eq(a) => [a] -> [[a]]
@@ -112,7 +114,8 @@ perm [] = [[]]
 perm xs = [x:ys | x <- xs, ys <- perm (remove xs x)]
 
 
+comb :: [a] -> Int -> [[a]]
 comb _ 0 = [[]]
 comb [] _ = []
-comb (x:xs) k = map (x:) (comb xs (k - 1)) ++ comb xs k
+comb (x:xs) k = comb xs k ++ map (x:) (comb xs (k - 1))
 
