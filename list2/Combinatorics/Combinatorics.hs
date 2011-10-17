@@ -116,5 +116,5 @@ perm xs = [x:ys | x <- xs, ys <- perm (remove xs x)]
 comb :: [a] -> Int -> [[a]]
 comb _ 0 = [[]]
 comb [] _ = []
-comb (x:xs) k = comb xs k ++ map (x:) (comb xs (k - 1))
+comb (x:xs) k = map (x:) (comb xs (k - 1)) ++ comb xs k
 
