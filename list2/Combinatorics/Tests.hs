@@ -54,8 +54,8 @@ combTakeOneFromTwoElements =
 combTakeTwoFromTwoElements =
   comb [1, 2] 2 ~?= [[1,2]]
 
-combTakeTwofromThreeElements =
+combTakeTwoFromThreeElements =
   comb ['a', 'b', 'c'] 2 ~?= [ ['a', 'b']
                              , ['a', 'c']
                              , ['b', 'c']]
-                                      
+
