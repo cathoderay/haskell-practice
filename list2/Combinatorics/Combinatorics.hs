@@ -72,9 +72,9 @@
 
     Making use of 'remove' function defined previously, a list comprehension may
     be used:
-    perm Eq(a) => [a] -> [[a]]
+    perm :: Eq(a) => [a] -> [[a]]
     perm [] = [[]]
-    perm xs = [x: | x <- xs, ys <- perm (remove xs x)]
+    perm xs = [x:ys | x <- xs, ys <- perm (remove xs x)]
 
    
     COMBINATIONS:
